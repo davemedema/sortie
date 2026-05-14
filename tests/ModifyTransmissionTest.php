@@ -1,6 +1,7 @@
 <?php
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Sortie\Sortie;
 use Tests\AbstractTestCase;
 
@@ -9,7 +10,7 @@ class ModifyTransmissionTest extends AbstractTestCase
   /**
    * data
    */
-  public function data()
+  public static function data()
   {
     return [
       ['Automatic', 'automatic'],
@@ -19,9 +20,7 @@ class ModifyTransmissionTest extends AbstractTestCase
     ];
   }
 
-  /**
-   * @dataProvider data()
-   */
+  #[DataProvider("data")]
   public function test($input, $expected)
   {
     $sortie = new Sortie('[foo->transmission]');

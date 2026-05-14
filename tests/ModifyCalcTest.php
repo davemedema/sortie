@@ -1,16 +1,15 @@
 <?php
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\Group;
 use Sortie\Sortie;
-use Tests\AbstractTestCase;
 
 class ModifyCalcTest extends AbstractTestCase
 {
   /**
    * test
-   *
-   * @group modify-calc
    */
+  #[Group("modify-calc")]
   public function test()
   {
     // Addition...

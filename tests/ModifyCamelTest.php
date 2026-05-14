@@ -1,15 +1,15 @@
 <?php
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Sortie\Sortie;
-use Tests\AbstractTestCase;
 
 class ModifyCamelTest extends AbstractTestCase
 {
   /**
    * data
    */
-  public function data()
+  public static function data()
   {
     return [
       ['FooBarBaz',     'fooBarBaz'],
@@ -22,9 +22,7 @@ class ModifyCamelTest extends AbstractTestCase
     ];
   }
 
-  /**
-   * @dataProvider data()
-   */
+  #[DataProvider("data")]
   public function test($input, $expected)
   {
     $sortie = new Sortie('[foo->camel]');

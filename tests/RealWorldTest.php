@@ -1,6 +1,7 @@
 <?php
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\Group;
 use Sortie\Sortie;
 use Tests\AbstractTestCase;
 
@@ -8,9 +9,8 @@ class RealWorldTest extends AbstractTestCase
 {
   /**
    * test
-   *
-   * @group process
    */
+  #[Group("process")]
   public function test()
   {
     // Escaped expression...

@@ -1,6 +1,7 @@
 <?php
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Sortie\Sortie;
 use Tests\AbstractTestCase;
 
@@ -9,7 +10,7 @@ class ModifyTimeToDecimalTest extends AbstractTestCase
   /**
    * data
    */
-  public function data()
+  public static function data()
   {
     return [
       // Invalid...
@@ -42,9 +43,7 @@ class ModifyTimeToDecimalTest extends AbstractTestCase
     ];
   }
 
-  /**
-   * @dataProvider data()
-   */
+  #[DataProvider("data")]
   public function test($input, $expected)
   {
     $sortie = new Sortie('[foo->timetodecimal]');

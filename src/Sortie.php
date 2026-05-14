@@ -166,7 +166,7 @@ class Sortie
    */
   protected function hydrate()
   {
-    // Reset the hyrated expressions and properties first in case the field is
+    // Reset the hydrated expressions and properties first in case the field is
     // empty or invalid.
     $this->expressions = [];
     $this->properties  = [];
@@ -1040,6 +1040,10 @@ class Sortie
 
     $words = isset($params[0]) ? (int)$params[0] : 100;
     $end   = isset($params[1]) ? $params[1] : '...';
+
+    if ($words < 1) {
+      return '';
+    }
 
     if ($end === 'false') {
       $end = '';

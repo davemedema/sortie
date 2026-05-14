@@ -1,6 +1,7 @@
 <?php
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\Group;
 use Sortie\Sortie;
 use Tests\AbstractTestCase;
 
@@ -8,9 +9,8 @@ class ModifyTest extends AbstractTestCase
 {
   /**
    * test
-   *
-   * @group modify
    */
+  #[Group("modify")]
   public function test()
   {
     // Empty property...

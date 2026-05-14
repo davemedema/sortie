@@ -1,6 +1,7 @@
 <?php
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\Group;
 use Sortie\Sortie;
 use Tests\AbstractTestCase;
 
@@ -8,9 +9,8 @@ class ModifySubstrTest extends AbstractTestCase
 {
   /**
    * test
-   *
-   * @group modify-substr
    */
+  #[Group("modify-substr")]
   public function test()
   {
     // No parameters...

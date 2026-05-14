@@ -1,6 +1,8 @@
 <?php
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use Sortie\Sortie;
 use Tests\AbstractTestCase;
 
@@ -17,7 +19,7 @@ class ModifyLimitTest extends AbstractTestCase
   /**
    * dataNoParams
    */
-  public function dataNoParams()
+  public static function dataNoParams()
   {
     return [
       [self::TEST_INPUT, self::TEST_INPUT],
@@ -27,7 +29,7 @@ class ModifyLimitTest extends AbstractTestCase
   /**
    * dataLimit
    */
-  public function dataLimit()
+  public static function dataLimit()
   {
     return [
       ['0',   self::TEST_INPUT, '...'],
@@ -41,7 +43,7 @@ class ModifyLimitTest extends AbstractTestCase
   /**
    * dataLimitEnd
    */
-  public function dataLimitEnd()
+  public static function dataLimitEnd()
   {
     return [
       ['0',   '!',     self::TEST_INPUT, '!'],
@@ -57,11 +59,8 @@ class ModifyLimitTest extends AbstractTestCase
   // Tests
   // ---------------------------------------------------------------------------
 
-  /**
-   * @dataProvider dataNoParams()
-   *
-   * @group modify-limit
-   */
+  #[DataProvider("dataNoParams")]
+  #[Group("modify-limit")]
   public function testNoParams($input, $expected)
   {
     $sortie = new Sortie('[foo->limit]');
@@ -69,11 +68,8 @@ class ModifyLimitTest extends AbstractTestCase
     $this->assertSame($expected, $sortie->process(['foo' => $input]));
   }
 
-  /**
-   * @dataProvider dataLimit()
-   *
-   * @group modify-limit
-   */
+  #[DataProvider("dataLimit")]
+  #[Group("modify-limit")]
   public function testLimit($limit, $input, $expected)
   {
     $sortie = new Sortie("[foo->limit:{$limit}]");
@@ -81,11 +77,8 @@ class ModifyLimitTest extends AbstractTestCase
     $this->assertSame($expected, $sortie->process(['foo' => $input]));
   }
 
-  /**
-   * @dataProvider dataLimitEnd()
-   *
-   * @group modify-limit
-   */
+  #[DataProvider("dataLimitEnd")]
+  #[Group("modify-limit")]
   public function testLimitEnd($limit, $end, $input, $expected)
   {
     $sortie = new Sortie("[foo->limit:{$limit}:{$end}]");

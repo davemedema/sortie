@@ -1,15 +1,15 @@
 <?php
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Sortie\Sortie;
-use Tests\AbstractTestCase;
 
 class ModifyFuelTypeTest extends AbstractTestCase
 {
   /**
    * data
    */
-  public function data()
+  public static function data()
   {
     return [
       ['Diesel Fuel',   'Diesel'],
@@ -21,9 +21,7 @@ class ModifyFuelTypeTest extends AbstractTestCase
     ];
   }
 
-  /**
-   * @dataProvider data()
-   */
+  #[DataProvider("data")]
   public function test($input, $expected)
   {
     $sortie = new Sortie('[foo->fueltype]');

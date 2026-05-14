@@ -1,15 +1,15 @@
 <?php
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Sortie\Sortie;
-use Tests\AbstractTestCase;
 
 class ModifyEmailTest extends AbstractTestCase
 {
   /**
    * data
    */
-  public function data()
+  public static function data()
   {
     return [
       ['foo@bar.com', 'foo@bar.com'],
@@ -19,9 +19,7 @@ class ModifyEmailTest extends AbstractTestCase
     ];
   }
 
-  /**
-   * @dataProvider data()
-   */
+  #[DataProvider("data")]
   public function test($input, $expected)
   {
     $sortie = new Sortie('[foo->email]');

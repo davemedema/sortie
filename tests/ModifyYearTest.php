@@ -1,6 +1,8 @@
 <?php
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use Sortie\Sortie;
 use Tests\AbstractTestCase;
 
@@ -12,7 +14,7 @@ class ModifyYearTest extends AbstractTestCase
   /**
    * dataNoParams
    */
-  public function dataNoParams()
+  public static function dataNoParams()
   {
     return [
       ['',      ''],
@@ -35,7 +37,7 @@ class ModifyYearTest extends AbstractTestCase
   /**
    * dataDigits
    */
-  public function dataDigits()
+  public static function dataDigits()
   {
     return [
       ['2', '00',   '00'],
@@ -64,7 +66,7 @@ class ModifyYearTest extends AbstractTestCase
   /**
    * dataDigitsCutoff
    */
-  public function dataDigitsCutoff()
+  public static function dataDigitsCutoff()
   {
     return [
       ['4', '19', '19', '2019'],
@@ -79,11 +81,8 @@ class ModifyYearTest extends AbstractTestCase
   // Tests
   // ---------------------------------------------------------------------------
 
-  /**
-   * @dataProvider dataNoParams()
-   *
-   * @group modify-year
-   */
+  #[DataProvider("dataNoParams")]
+  #[Group("modify-year")]
   public function test($input, $expected)
   {
     $sortie = new Sortie('[foo->year]');
@@ -91,11 +90,8 @@ class ModifyYearTest extends AbstractTestCase
     $this->assertSame($expected, $sortie->process(['foo' => $input]));
   }
 
-  /**
-   * @dataProvider dataDigits()
-   *
-   * @group modify-year
-   */
+  #[DataProvider("dataDigits")]
+  #[Group("modify-year")]
   public function testDigits($digits, $input, $expected)
   {
     $sortie = new Sortie("[foo->year:{$digits}]");
@@ -103,11 +99,8 @@ class ModifyYearTest extends AbstractTestCase
     $this->assertSame($expected, $sortie->process(['foo' => $input]));
   }
 
-  /**
-   * @dataProvider dataDigitsCutoff()
-   *
-   * @group modify-year
-   */
+  #[DataProvider("dataDigitsCutoff")]
+  #[Group("modify-year")]
   public function testDigitsCutoff($digits, $cutoff, $input, $expected)
   {
     $sortie = new Sortie("[foo->year:{$digits}:{$cutoff}]");

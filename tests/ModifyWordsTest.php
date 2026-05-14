@@ -1,6 +1,8 @@
 <?php
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use Sortie\Sortie;
 use Tests\AbstractTestCase;
 
@@ -17,7 +19,7 @@ class ModifyWordsTest extends AbstractTestCase
   /**
    * dataNoParams
    */
-  public function dataNoParams()
+  public static function dataNoParams()
   {
     return [
       [self::TEST_INPUT, self::TEST_INPUT],
@@ -27,7 +29,7 @@ class ModifyWordsTest extends AbstractTestCase
   /**
    * dataWords
    */
-  public function dataWords()
+  public static function dataWords()
   {
     return [
       ['0',   self::TEST_INPUT, ''],
@@ -40,7 +42,7 @@ class ModifyWordsTest extends AbstractTestCase
   /**
    * dataWordsEnd
    */
-  public function dataWordsEnd()
+  public static function dataWordsEnd()
   {
     return [
       ['0',   '!',     self::TEST_INPUT, ''],
@@ -55,11 +57,8 @@ class ModifyWordsTest extends AbstractTestCase
   // Tests
   // ---------------------------------------------------------------------------
 
-  /**
-   * @dataProvider dataNoParams()
-   *
-   * @group modify-words
-   */
+  #[DataProvider("dataNoParams")]
+  #[Group("modify-words")]
   public function testNoParams($input, $expected)
   {
     $sortie = new Sortie('[foo->words]');
@@ -67,11 +66,8 @@ class ModifyWordsTest extends AbstractTestCase
     $this->assertSame($expected, $sortie->process(['foo' => $input]));
   }
 
-  /**
-   * @dataProvider dataWords()
-   *
-   * @group modify-words
-   */
+  #[DataProvider("dataWords")]
+  #[Group("modify-words")]
   public function testWords($words, $input, $expected)
   {
     $sortie = new Sortie("[foo->words:{$words}]");
@@ -79,11 +75,8 @@ class ModifyWordsTest extends AbstractTestCase
     $this->assertSame($expected, $sortie->process(['foo' => $input]));
   }
 
-  /**
-   * @dataProvider dataWordsEnd()
-   *
-   * @group modify-words
-   */
+  #[DataProvider("dataWordsEnd")]
+  #[Group("modify-words")]
   public function testWordsEnd($words, $end, $input, $expected)
   {
     $sortie = new Sortie("[foo->words:{$words}:{$end}]");

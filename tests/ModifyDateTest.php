@@ -1,8 +1,8 @@
 <?php
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Sortie\Sortie;
-use Tests\AbstractTestCase;
 
 class ModifyDateTest extends AbstractTestCase
 {
@@ -16,7 +16,7 @@ class ModifyDateTest extends AbstractTestCase
   /**
    * dataNoFormat
    */
-  public function dataNoFormat()
+  public static function dataNoFormat()
   {
     return [
       [self::TEST_DATETIME, self::TEST_DEFAULT],
@@ -27,7 +27,7 @@ class ModifyDateTest extends AbstractTestCase
   /**
    * dataFormat
    */
-  public function dataFormat()
+  public static function dataFormat()
   {
     return [
       // Quick...
@@ -47,9 +47,7 @@ class ModifyDateTest extends AbstractTestCase
   // Tests
   // ---------------------------------------------------------------------------
 
-  /**
-   * @dataProvider dataNoFormat()
-   */
+  #[DataProvider("dataNoFormat")]
   public function testNoFormat($input, $expected)
   {
     $sortie = new Sortie('[foo->date]');
@@ -57,9 +55,7 @@ class ModifyDateTest extends AbstractTestCase
     $this->assertSame($expected, $sortie->process(['foo' => $input], true));
   }
 
-  /**
-   * @dataProvider dataFormat()
-   */
+  #[DataProvider("dataFormat")]
   public function testFormat($format, $input, $expected)
   {
     $sortie = new Sortie("[foo->date:{$format}]");

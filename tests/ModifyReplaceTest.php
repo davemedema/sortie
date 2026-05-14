@@ -1,6 +1,7 @@
 <?php
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\Group;
 use Sortie\Sortie;
 use Tests\AbstractTestCase;
 
@@ -8,9 +9,8 @@ class ModifyReplaceTest extends AbstractTestCase
 {
   /**
    * test
-   *
-   * @group modify-replace
    */
+  #[Group("modify-replace")]
   public function test()
   {
     // Default...

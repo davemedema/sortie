@@ -1,17 +1,16 @@
 <?php
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\Group;
 use ArgumentCountError;
 use Sortie\Sortie;
-use Tests\AbstractTestCase;
 
 class ConstructTest extends AbstractTestCase
 {
   /**
    * testComplexField
-   *
-   * @group construct
    */
+  #[Group("construct")]
   public function testComplexField()
   {
     $expectedField = '[foo->one|bar->one:param|baz] - [qux->one->two:param:param]';
@@ -60,9 +59,8 @@ class ConstructTest extends AbstractTestCase
 
   /**
    * testEmptyField
-   *
-   * @group construct
    */
+  #[Group("construct")]
   public function testEmptyField()
   {
     $sortie = new Sortie('');
@@ -76,9 +74,8 @@ class ConstructTest extends AbstractTestCase
 
   /**
    * testIntegerField
-   *
-   * @group construct
    */
+  #[Group("construct")]
   public function testIntegerField()
   {
     $sortie = new Sortie(123);
@@ -92,9 +89,8 @@ class ConstructTest extends AbstractTestCase
 
   /**
    * testNullField
-   *
-   * @group construct
    */
+  #[Group("construct")]
   public function testNullField()
   {
     $this->expectException(ArgumentCountError::class);
@@ -104,9 +100,8 @@ class ConstructTest extends AbstractTestCase
 
   /**
    * testSimpleField
-   *
-   * @group construct
    */
+  #[Group("construct")]
   public function testSimpleField()
   {
     $expectedField = '[foo]';

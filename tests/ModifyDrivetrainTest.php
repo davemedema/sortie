@@ -1,15 +1,15 @@
 <?php
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Sortie\Sortie;
-use Tests\AbstractTestCase;
 
 class ModifyDrivetrainTest extends AbstractTestCase
 {
   /**
    * data
    */
-  public function data()
+  public static function data()
   {
     return [
       ['4WD', '4X4'],
@@ -21,9 +21,7 @@ class ModifyDrivetrainTest extends AbstractTestCase
     ];
   }
 
-  /**
-   * @dataProvider data()
-   */
+  #[DataProvider("data")]
   public function test($input, $expected)
   {
     $sortie = new Sortie('[foo->drivetrain]');

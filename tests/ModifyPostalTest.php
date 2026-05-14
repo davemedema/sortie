@@ -1,6 +1,7 @@
 <?php
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\Group;
 use Sortie\Sortie;
 use Tests\AbstractTestCase;
 
@@ -8,9 +9,8 @@ class ModifyPostalTest extends AbstractTestCase
 {
   /**
    * test
-   *
-   * @group modify-postal
    */
+  #[Group("modify-postal")]
   public function test()
   {
     // Invalid...

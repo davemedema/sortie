@@ -1,15 +1,15 @@
 <?php
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Sortie\Sortie;
-use Tests\AbstractTestCase;
 
 class ModifyBodyStyleTest extends AbstractTestCase
 {
   /**
    * data
    */
-  public function data()
+  public static function data()
   {
     return [
       ['convertible', 'CONVERTIBLE'],
@@ -28,9 +28,7 @@ class ModifyBodyStyleTest extends AbstractTestCase
     ];
   }
 
-  /**
-   * @dataProvider data()
-   */
+  #[DataProvider("data")]
   public function test($input, $expected)
   {
     $sortie = new Sortie('[foo->bodystyle]');

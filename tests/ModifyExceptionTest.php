@@ -2,7 +2,6 @@
 namespace Tests;
 
 use Sortie\Sortie;
-use Tests\AbstractTestCase;
 
 class ModifyExceptionTest extends AbstractTestCase
 {

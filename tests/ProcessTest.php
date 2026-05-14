@@ -1,6 +1,7 @@
 <?php
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\Group;
 use Sortie\Sortie;
 use Tests\AbstractTestCase;
 
@@ -8,9 +9,8 @@ class ProcessTest extends AbstractTestCase
 {
   /**
    * test
-   *
-   * @group process
    */
+  #[Group("process")]
   public function test()
   {
     // Empty...
@@ -107,9 +107,8 @@ class ProcessTest extends AbstractTestCase
 
   /**
    * testBoolean
-   *
-   * @group process
    */
+  #[Group("process")]
   public function testBoolean()
   {
     // Simple TRUE...
